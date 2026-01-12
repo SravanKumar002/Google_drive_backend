@@ -32,7 +32,11 @@ connectDB();
 // CORS - Allow frontend to access API
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      "https://google-drive-vert.vercel.app",
+      process.env.FRONTEND_URL
+    ].filter(Boolean),
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
